@@ -24,9 +24,18 @@ shuffle <args>
 
 ### Examples
 
+#### Shuffle a word
+
 ```sh
 shuffle word foobar
 aforboo
+```
+
+#### Shuffle a sequence of numbers
+
+```sh
+shuffle seq 1 2 3 4
+4 1 2 3
 ```
 
 ### Help documentation

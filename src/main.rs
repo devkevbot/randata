@@ -4,27 +4,29 @@ use rand::Rng;
 fn main() {
     let cli = Cli::parse();
 
-    match cli.command {
+    let output = match cli.command {
         Commands::Word { word } => {
-            let result = fisher_yates(word.as_str());
-            println!("{result}")
+            // Screw non-scalar values, we ball
+            let mut chars: Vec<_> = word.chars().collect();
+            fisher_yates(&mut chars);
+            chars.into_iter().collect()
         }
-    }
+        Commands::Seq { mut seq } => {
+            fisher_yates(&mut seq);
+            seq.join(" ")
+        }
+    };
+    println!("{output}");
 }
 
-/// Performs a Fisher-Yates shuffle of the characters in the input `&str`.
-fn fisher_yates(word: &str) -> String {
+/// Performs an in-place Fisher-Yates shuffle on the input
+fn fisher_yates<T>(seq: &mut Vec<T>) {
     let mut rng = rand::thread_rng();
 
-    // Screw non-scalar values, we ball
-    let mut chars: Vec<_> = word.chars().collect();
-
-    for i in (0..word.len()).rev() {
+    for i in (0..seq.len()).rev() {
         let j = rng.gen_range(0..=i);
-        chars.swap(i, j)
+        seq.swap(i, j)
     }
-
-    chars.into_iter().collect()
 }
 
 #[derive(Parser, Debug)]
@@ -38,4 +40,6 @@ struct Cli {
 enum Commands {
     /// Shuffle the letters in the word and return the scrambled output
     Word { word: String },
+    /// Shuffle the numbers in the sequence and return the output
+    Seq { seq: Vec<String> },
 }
