@@ -5,15 +5,16 @@ fn main() {
     let cli = Cli::parse();
 
     let output = match cli.command {
-        Commands::Word { word } => {
-            // Screw non-scalar values, we ball
-            let mut chars: Vec<_> = word.chars().collect();
-            shuffle(&mut chars);
-            chars.into_iter().collect()
-        }
-        Commands::Seq { mut seq } => {
-            shuffle(&mut seq);
-            seq.join(" ")
+        Commands::Shuffle { mut input } => {
+            if input.len() == 1 {
+                let word = input.first().unwrap();
+                let mut chars: Vec<_> = word.chars().collect();
+                shuffle(&mut chars);
+                chars.into_iter().collect()
+            } else {
+                shuffle(&mut input);
+                input.join(" ")
+            }
         }
         Commands::Numbers { length, start } => {
             let start = start.unwrap_or(1);
@@ -49,10 +50,8 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Commands {
-    /// Shuffles the letters in the input word and returns the output.
-    Word { word: String },
-    /// Shuffles the numbers in the input sequence and return the output.
-    Seq { seq: Vec<String> },
+    /// Generates a shuffled version of the input.
+    Shuffle { input: Vec<String> },
     /// Generates a shuffled integer sequence.
     Numbers {
         #[arg(short, long)]

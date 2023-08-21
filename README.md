@@ -9,14 +9,14 @@ A command line interface which produces randomized output in different formats.
 #### Shuffle the letters in a word given as input
 
 ```txt
-randata word foobar
+randata shuffle foobar
 aforboo
 ```
 
 #### Shuffle a sequence of numbers given as input
 
 ```txt
-randata seq 1 2 3 4
+randata shuffle 1 2 3 4
 4 1 2 3
 ```
 
