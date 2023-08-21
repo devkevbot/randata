@@ -1,4 +1,4 @@
-use clap::{Parser, Subcommand};
+use clap::{Parser, Subcommand, ValueEnum};
 use rand::Rng;
 
 fn main() {
@@ -20,6 +20,10 @@ fn main() {
             let mut seq: Vec<String> = (start..start + length).map(|i| i.to_string()).collect();
             shuffle(&mut seq);
             seq.join(" ")
+        }
+        Commands::Color { format } => {
+            let format = format.unwrap_or_default();
+            gen_color_string(&format)
         }
     };
 
@@ -57,4 +61,35 @@ enum Commands {
         #[arg(short, long)]
         start: Option<usize>,
     },
+    // Generate a random color value.
+    Color {
+        #[arg(short, long)]
+        format: Option<ColorFormat>,
+    },
+}
+
+#[derive(Debug, Clone, ValueEnum, Default)]
+enum ColorFormat {
+    #[default]
+    Hex,
+    Hsl,
+    Rgb,
+}
+
+fn gen_color_string(fmt: &ColorFormat) -> String {
+    let mut rng = rand::thread_rng();
+
+    let red = rng.gen_range(0..=255);
+    let green = rng.gen_range(0..=255);
+    let blue = rng.gen_range(0..=255);
+
+    let hue = rng.gen_range(0..=360);
+    let saturation = rng.gen_range(0..=100);
+    let lightness = rng.gen_range(0..=100);
+
+    match fmt {
+        ColorFormat::Hex => format!("#{red:02x}{green:02x}{blue:02x}"),
+        ColorFormat::Hsl => format!("({hue},{saturation}%,{lightness}%)"),
+        ColorFormat::Rgb => format!("({red},{green},{blue})"),
+    }
 }

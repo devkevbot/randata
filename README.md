@@ -8,24 +8,37 @@ A Rust command line interface which randomizes input and output.
 
 #### Shuffle the letters in a word given as input
 
-```sh
+```txt
 shuffle word foobar
 aforboo
 ```
 
 #### Shuffle a sequence of numbers given as input
 
-```sh
+```txt
 shuffle seq 1 2 3 4
 4 1 2 3
 ```
 
 #### Produce a shuffled sequence of numbers
 
-```sh
+```txt
 # Produces a shuffled sequence of five numbers, starting at 10.
 shuffle numbers --length 5 --start 10
 13 12 14 11 10
+```
+
+#### Produce a random color value
+
+```txt
+shuffle color --format hex
+#e5f5c1
+
+shuffle color --format rgb
+(112,39,164)
+
+shuffle color --format hsl
+(324,98%,20%)
 ```
 
 ### Help documentation
