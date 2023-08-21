@@ -8,19 +8,26 @@ fn main() {
         Commands::Word { word } => {
             // Screw non-scalar values, we ball
             let mut chars: Vec<_> = word.chars().collect();
-            fisher_yates(&mut chars);
+            shuffle(&mut chars);
             chars.into_iter().collect()
         }
         Commands::Seq { mut seq } => {
-            fisher_yates(&mut seq);
+            shuffle(&mut seq);
+            seq.join(" ")
+        }
+        Commands::Numbers { length, start } => {
+            let start = start.unwrap_or(1);
+            let mut seq: Vec<String> = (start..start + length).map(|i| i.to_string()).collect();
+            shuffle(&mut seq);
             seq.join(" ")
         }
     };
+
     println!("{output}");
 }
 
 /// Performs an in-place Fisher-Yates shuffle on the input
-fn fisher_yates<T>(seq: &mut Vec<T>) {
+fn shuffle<T>(seq: &mut Vec<T>) {
     let mut rng = rand::thread_rng();
 
     for i in (0..seq.len()).rev() {
@@ -38,8 +45,16 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Commands {
-    /// Shuffle the letters in the word and return the scrambled output
+    /// Shuffles the letters in the input word and returns the output.
     Word { word: String },
-    /// Shuffle the numbers in the sequence and return the output
+    /// Shuffles the numbers in the input sequence and return the output.
     Seq { seq: Vec<String> },
+    /// Generates a shuffled integer sequence.
+    Numbers {
+        #[arg(short, long)]
+        length: usize,
+
+        #[arg(short, long)]
+        start: Option<usize>,
+    },
 }
