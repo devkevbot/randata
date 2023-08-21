@@ -9,6 +9,7 @@ pub enum ColorFormat {
     Rgb,
 }
 
+/// Generates a string representation of a random color in the specified color format.
 pub fn gen_color_string(fmt: &ColorFormat) -> String {
     let mut rng = rand::thread_rng();
 

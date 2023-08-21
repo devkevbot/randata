@@ -1,6 +1,6 @@
 use rand::Rng;
 
-/// Performs an in-place Fisher-Yates shuffle on the input
+/// Performs an in-place Fisher-Yates shuffle on the input.
 pub fn fisher_yates<T>(seq: &mut Vec<T>) {
     let mut rng = rand::thread_rng();
 

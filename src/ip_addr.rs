@@ -1,3 +1,5 @@
+use std::net::Ipv4Addr;
+
 use clap::ValueEnum;
 use rand::Rng;
 
@@ -8,7 +10,11 @@ pub enum IpAddrFormat {
     Ipv6,
 }
 
-pub fn gen_ip_addr(fmt: &IpAddrFormat) -> String {
+/// Generates a string representation of a random IP address in the specified format.
+///
+/// Note: the generated addresses are guaranteed to be *structurally* correct, but are *not*
+/// guaranteed to be semantically correct.
+pub fn gen_ip_addr_string(fmt: &IpAddrFormat) -> String {
     let mut rng = rand::thread_rng();
 
     match fmt {

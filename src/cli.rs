@@ -2,6 +2,7 @@ use clap::{Parser, Subcommand};
 
 use crate::{color::ColorFormat, commands, ip_addr::IpAddrFormat};
 
+/// Parses the CLI arguments and executes the appropriate command.
 pub fn run() -> String {
     execute(Cli::parse())
 }
