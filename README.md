@@ -1,6 +1,6 @@
 # Shuffle
 
-A Rust command line interface which randomizes input and output.
+A Rust command line interface which produces randomized output in different formats.
 
 ## How to use
 
