@@ -32,3 +32,7 @@ pub fn ip_addr(format: Option<crate::ip_addr::IpAddrFormat>) -> String {
 pub fn coin_flip() -> String {
     crate::coin_flip::coin_flip()
 }
+
+pub fn dice_roll(sides: Option<usize>) -> String {
+    crate::dice_roll::dice_roll(sides)
+}

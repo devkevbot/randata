@@ -13,6 +13,7 @@ fn execute(cli: Cli) -> String {
         Commands::Color { format } => commands::color(format),
         Commands::IpAddr { format } => commands::ip_addr(format),
         Commands::CoinFlip {} => commands::coin_flip(),
+        Commands::DiceRoll { sides } => commands::dice_roll(sides),
     }
 }
 
@@ -48,4 +49,9 @@ enum Commands {
     },
     /// Generates the result of flipping a coin.
     CoinFlip {},
+    /// Generates a random dice roll.
+    DiceRoll {
+        #[arg(short, long)]
+        sides: Option<usize>,
+    },
 }
