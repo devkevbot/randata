@@ -48,6 +48,20 @@ randata ip --format ipv6
 4ade:8899:39c3:fc9e:e4fe:e20e:8f4a:2dda
 ```
 
+### Produce a coin flip
+
+```txt
+randata coin-flip
+heads
+```
+
+### Produce a dice roll
+
+```txt
+randata dice-roll --sides 10
+7
+```
+
 ## Help documentation
 
 Full instructions can be found by running `cargo run help`
