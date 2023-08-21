@@ -12,6 +12,7 @@ fn execute(cli: Cli) -> String {
         Commands::Numbers { length, start } => commands::numbers(length, start),
         Commands::Color { format } => commands::color(format),
         Commands::IpAddr { format } => commands::ip_addr(format),
+        Commands::CoinFlip {} => commands::coin_flip(),
     }
 }
 
@@ -34,15 +35,17 @@ enum Commands {
         #[arg(short, long)]
         start: Option<usize>,
     },
-    // Generate a random color value.
+    /// Generate a random color value.
     Color {
         #[arg(short, long)]
         format: Option<ColorFormat>,
     },
-    // Generates a random IP address.
+    /// Generates a random IP address.
     #[command(name = "ip")]
     IpAddr {
         #[arg(short, long)]
         format: Option<IpAddrFormat>,
     },
+    /// Generates the result of flipping a coin.
+    CoinFlip {},
 }

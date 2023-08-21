@@ -28,3 +28,7 @@ pub fn ip_addr(format: Option<crate::ip_addr::IpAddrFormat>) -> String {
     let format = format.unwrap_or_default();
     crate::ip_addr::gen_ip_addr(&format)
 }
+
+pub fn coin_flip() -> String {
+    crate::coin_flip::coin_flip()
+}

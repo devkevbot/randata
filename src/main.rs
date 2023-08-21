@@ -1,5 +1,6 @@
 mod algo;
 mod cli;
+mod coin_flip;
 mod color;
 mod commands;
 mod ip_addr;
