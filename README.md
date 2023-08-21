@@ -2,33 +2,30 @@
 
 A command line interface which produces randomized output in different formats.
 
-## How to use
+## Examples
 
-### Examples
-
-#### Shuffle the letters in a word given as input
+### Shuffle the letters in a word given as input
 
 ```txt
 randata shuffle foobar
 aforboo
 ```
 
-#### Shuffle a sequence of numbers given as input
+### Shuffle a sequence of numbers given as input
 
 ```txt
 randata shuffle 1 2 3 4
 4 1 2 3
 ```
 
-#### Produce a shuffled sequence of numbers
+### Produce a shuffled sequence of 5 numbers, starting at 10
 
 ```txt
-# Produces a shuffled sequence of five numbers, starting at 10.
 randata numbers --length 5 --start 10
 13 12 14 11 10
 ```
 
-#### Produce a random color value
+### Produce a random color value
 
 ```txt
 randata color --format hex
@@ -41,7 +38,17 @@ randata color --format hsl
 (324,98%,20%)
 ```
 
-### Help documentation
+### Produce a random IP address
+
+```txt
+randata ip --format ipv4
+229.222.240.211
+
+randata ip --format ipv6
+4ade:8899:39c3:fc9e:e4fe:e20e:8f4a:2dda
+```
+
+## Help documentation
 
 Full instructions can be found by running `cargo run help`
 
