@@ -1,6 +1,13 @@
 [package]
-name = "shuffle"
+name = "randata"
+description = "A command line interface which produces randomized output in different formats."
+authors = ["devkevbot"]
+readme = "README.md"
+keywords = ["cli", "random", "data"]
+license = "MIT"
 version = "0.1.0"
+repository = "https://github.com/devkevbot/randata"
+homepage = "https://github.com/devkevbot/randata"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

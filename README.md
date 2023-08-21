@@ -1,6 +1,6 @@
-# Shuffle
+# Randata
 
-A Rust command line interface which produces randomized output in different formats.
+A command line interface which produces randomized output in different formats.
 
 ## How to use
 
@@ -9,14 +9,14 @@ A Rust command line interface which produces randomized output in different form
 #### Shuffle the letters in a word given as input
 
 ```txt
-shuffle word foobar
+randata word foobar
 aforboo
 ```
 
 #### Shuffle a sequence of numbers given as input
 
 ```txt
-shuffle seq 1 2 3 4
+randata seq 1 2 3 4
 4 1 2 3
 ```
 
@@ -24,20 +24,20 @@ shuffle seq 1 2 3 4
 
 ```txt
 # Produces a shuffled sequence of five numbers, starting at 10.
-shuffle numbers --length 5 --start 10
+randata numbers --length 5 --start 10
 13 12 14 11 10
 ```
 
 #### Produce a random color value
 
 ```txt
-shuffle color --format hex
+randata color --format hex
 #e5f5c1
 
-shuffle color --format rgb
+randata color --format rgb
 (112,39,164)
 
-shuffle color --format hsl
+randata color --format hsl
 (324,98%,20%)
 ```
 
@@ -45,12 +45,12 @@ shuffle color --format hsl
 
 Full instructions can be found by running `cargo run help`
 
-Command-specific instructions can be found by running `cargo run shuffle --help`
+Command-specific instructions can be found by running `cargo run randata --help`
 
 ## Installation
 
 The project executable can either be built and run via `cargo` or installed
-locally onto your machine and run via the executable name `shuffle`.
+locally onto your machine and run via the executable name `randata`.
 
 ### Build and run
 
@@ -62,5 +62,5 @@ cargo run <args>
 
 ```sh
 cargo install --path .
-shuffle <args>
+randata <args>
 ```
